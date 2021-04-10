@@ -1,0 +1,11 @@
+{
+  "name": "70maiGPSInterpreter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DonTheDevPL/70maiGPSInterpreter.git",
+  "author": "Michał <33964835+DonTheDevPL@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node": "^15.12.0"
+  }
+}
