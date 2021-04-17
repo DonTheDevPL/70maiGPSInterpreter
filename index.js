@@ -6,7 +6,14 @@ const morgan = require('morgan');
 const upload = require('./routers/upload')
 const tests = require('./routers/tests')
 
+const mongoose = require('mongoose');
 
+const MongoDBURL = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/70maiGPSInterpeter?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`;
+mongoose.connect(MongoDBURL, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+    console.log('Database Connected')
+}).catch(err => {
+    console.log(err)
+});
 
 const _ = require('lodash');
 
@@ -21,7 +28,7 @@ app.use(morgan('dev'));
 app.use(fileUpload({
     createParentPath: true
 }));
-app.use('/upload',upload);
+app.use('/',upload);
 app.use('/',tests);
 
 

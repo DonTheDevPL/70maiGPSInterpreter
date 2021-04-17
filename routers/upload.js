@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const fs = require('fs');
 
+const GPSDataDB = require('../models/GPSSchema')
+
+
 router.post('/upload', function (req, res) {
     let File;
     let uploadPath;
@@ -12,8 +15,8 @@ router.post('/upload', function (req, res) {
 
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     File = req.files.FileForm;
-    uploadPath = __dirname + '/uploads/' + File.name;
-
+    uploadPath = '/files/uploads/' + File.name;
+    console.log(uploadPath);
     // Use the mv() method to place the file somewhere on your server
     File.mv(uploadPath, function (err) {
         if (err)
@@ -33,8 +36,8 @@ ParseFile = (name) => {
         }
     }
 
-    let Path = __dirname + '/uploads/' + name;
-    let Output = __dirname + '/processing/' + name.split('.')[0] + '.json';
+    let Path = '/files/uploads/' + name;
+    let Output = '/files/processing/' + name.split('.')[0] + '.json';
     fs.readFile(Path, 'utf8', function (err, data) {
         let globalObj = {};
         if (err) {
@@ -58,7 +61,7 @@ ParseFile = (name) => {
             }
         }
         //fs.writeFileSync(Output, JSON.stringify(globalObj, null, 2));
-        /*
+
             for (const [key, value] of Object.entries(globalObj)) {
 
                 console.log(key);
@@ -70,12 +73,12 @@ ParseFile = (name) => {
                         latitude: value.latitude,
                         longitude: value.longitude
                     });
+                    SaveModel(data).then();
                 }
             }
         });
-*/
-
-    });
 }
-
+SaveModel = async (data)=> {
+    const newData = await data.save();
+}
 module.exports = router;
