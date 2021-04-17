@@ -15,7 +15,8 @@
     "mongoose": "^5.12.4",
     "monk": "^7.3.4",
     "morgan": "^1.10.0",
-    "node": "^15.12.0"
+    "node": "^15.12.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
