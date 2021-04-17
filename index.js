@@ -4,11 +4,10 @@ const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const mongo = require('mongodb');
-//const db = require('monk')(`${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/70maiGPSInterpeter?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`);
+
 const mongoose = require('mongoose');
-//const MongoDBURL = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/70maiGPSInterpeter?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`;
-const MongoDBURL = `mongodb://Admin:GSpCwgjny1nKlugn@${process.env.DB_HOST}:${process.env.DB_PORT}/70maiGPSInterpeter?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`;
+const MongoDBURL = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/70maiGPSInterpeter?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`;
+
 mongoose.connect(MongoDBURL, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log('Database Connected')
 }).catch(err => {
