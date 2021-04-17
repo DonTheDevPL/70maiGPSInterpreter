@@ -15,7 +15,6 @@ mongoose.connect(MongoDBURL, {useNewUrlParser: true, useUnifiedTopology: true}).
     console.log(err)
 });
 
-const _ = require('lodash');
 
 const app = express();
 const port = 3000;
