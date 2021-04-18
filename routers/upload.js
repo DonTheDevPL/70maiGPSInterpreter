@@ -17,8 +17,7 @@ router.post('/upload', function (req, res) {
 
     const name = uuidv4();
     File = req.files.FileForm;
-    uploadPath = '/files/uploads/' + name;
-    console.log(uploadPath);
+    uploadPath = `/files/uploads/${name}`;
 
     File.mv(uploadPath, function (err) {
         if (err)
@@ -30,7 +29,8 @@ router.post('/upload', function (req, res) {
 
 ParseFile = (name) => {
     class Data {
-        constructor(hour, speed, latitude, longitude, date) {
+        constructor(username, hour, speed, latitude, longitude, date) {
+            this.username = username;
             this.date = date;
             this.hour = hour;
             this.speed = speed;
@@ -39,7 +39,7 @@ ParseFile = (name) => {
         }
     }
 
-    let Path = '/files/uploads/' + name;
+    let Path = `/files/uploads/${name}`;
     fs.readFile(Path, 'utf8', async function (err, data) {
         let arr = [];
         if (err) {
@@ -49,19 +49,15 @@ ParseFile = (name) => {
         for (let line of lines) {
             if (line !== '') {
                 const lineArr = line.split(',');
-                const obj = new Data(lineArr[0].split(' ')[1], lineArr[3], lineArr[4], lineArr[5], lineArr[0].split(' ')[0]);
+                const obj = new Data("Test User", lineArr[0].split(' ')[1], lineArr[3], lineArr[4], lineArr[5], lineArr[0].split(' ')[0]);
                 arr.push(obj);
             }
         }
         await GPSDataDB.insertMany(arr);
         console.log('Data saved');
-        fs.rm(Path, async function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log(`File removed`);
-        });
+        fs.unlinkSync(Path);
     });
-};
+
+}
 
 module.exports = router;
