@@ -3,8 +3,8 @@ const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const upload = require('./routers/upload')
-const tests = require('./routers/tests')
+const upload = require('../routers/upload')
+const tests = require('../routers/tests')
 
 const mongoose = require('mongoose');
 
