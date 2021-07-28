@@ -1,7 +1,7 @@
 version: "3.9"
 services: 
     backend:
-        image: node:12-alpine
+        image: 70maigpsinterpreter:latest
         build:
             context: .
             dockerfile: ./Burbon/Dockerfile

@@ -6,7 +6,7 @@
   "author": "Michał <33964835+DonTheDevPL@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node src/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
