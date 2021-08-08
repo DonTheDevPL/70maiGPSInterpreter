@@ -11,7 +11,7 @@ const GPSDataDB = require('../models/GPSSchema');
 const GPSData = require('../classes/GPSData')
 const GPSDataWithUser = require('../classes/GPSDataWithUser')
 
-router.post('/upload', function (req, res) {
+/*router.post('/upload', function (req, res) {
     let File;
     let uploadPath;
 
@@ -30,7 +30,7 @@ router.post('/upload', function (req, res) {
         ParseFile(name);
         res.send('File uploaded!');
     });
-});
+});*/
 router.post('/convertGPS', (req, res) => {
     let File;
     let uploadPath;
@@ -68,10 +68,7 @@ const ConvertData = (name) => {
     fs.unlinkSync(path);
     return arr;
 }
-
-GetDataAfterProcessing = (data) => {
-
-}
+/*
 ParseFile = (name) => {
     let Path = `/files/uploads/${name}`;
     fs.readFile(Path, 'utf8', async function (err, data) {
@@ -93,5 +90,5 @@ ParseFile = (name) => {
     });
 
 }
-
+*/
 module.exports = router;

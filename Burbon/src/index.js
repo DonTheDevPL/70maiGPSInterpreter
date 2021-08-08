@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const upload = require('./routers/upload')
-const tests = require('./routers/tests')
+//const tests = require('./routers/tests')
 /*
 const mongoose = require('mongoose');
 
@@ -31,7 +31,7 @@ app.use(fileUpload({
     createParentPath: true
 }));
 app.use('/', upload);
-app.use('/', tests);
+//app.use('/', tests);
 
 
 
