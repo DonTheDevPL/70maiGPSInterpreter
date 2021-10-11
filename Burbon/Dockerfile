@@ -1,5 +1,5 @@
 FROM node:12-alpine
-WORKDIR /app
-COPY . .
+COPY ./Burbon ./api/
+WORKDIR /api/
 RUN npm install --only=production
-CMD ["node", "/app/src/index.js"]
+CMD ["node", "./src/index.js"]
